@@ -1,3 +1,4 @@
+#crear un programa que permite añadir dos numeros y determinar cual es el numero menor 
 n=int(input("Cuantos numeros se van a introducir?: "))
 
 for i in range(0,n):
