@@ -1,3 +1,4 @@
+#crear un programa que haga de contador y cuando llegue a cierto numero el codigo vuelva a empezar a desarrollarse
 x = 0
 
 while x < 10:
