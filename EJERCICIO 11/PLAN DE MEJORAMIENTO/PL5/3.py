@@ -1,3 +1,4 @@
+#definir una funcion que permita saber cual es el multiplo del numero que se ingrese
 def funcion(tam,div):
     for x in range(8,tam):
         if(x%div==0):
