@@ -1,3 +1,4 @@
+#crear un programa que cree un contador y cuente cuantos numero ingresados son positivos
 positivos=0
 n=int(input("Número (0 para terminar): "))
 while n!=0:
