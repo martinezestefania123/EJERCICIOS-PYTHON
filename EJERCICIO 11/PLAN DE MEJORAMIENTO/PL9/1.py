@@ -1,3 +1,4 @@
+#desarrollar un programa que 
 def funcion(tupla,start,end):
     print(tupla[start:end])
 
