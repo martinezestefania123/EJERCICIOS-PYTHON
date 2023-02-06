@@ -1,3 +1,4 @@
+#escriba un programa que de como resultado "false" o "true"
 x=4
 y=3
 z=2
