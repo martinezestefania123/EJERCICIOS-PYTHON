@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Encabezado omitido por brevedad -->
+    <!--funcion de js para mensaje por pantalla-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRO</title>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--funcion de js para validar datos-->
+    <script>
+        function validarRegistro() {
+            var nombreUsuario = document.formulario.nombreUsuario.value;
+            var contrasenia = document.formulario.contrasenia.value;
+
+            // Validar si el nombre de usuario ya existe
+            if (esUsuarioRepetido(nombreUsuario)) {
+                swal("¡Error!", "El nombre de usuario ya existe. Por favor, elige otro.", "error");
+                return false;
+            }
+
+            // Almacenar usuario y contraseña
+            almacenarUsuario(nombreUsuario, contrasenia);
+            swal("¡Éxito!", "Registro exitoso. Puedes iniciar sesión.", "success");
+            return true;
+        }
+
+        function esUsuarioRepetido(usuario) {
+            var usuariosRegistrados = localStorage.getItem("usuariosRegistrados");
+            if (!usuariosRegistrados) {
+                return false;
+            }
+            usuariosRegistrados = JSON.parse(usuariosRegistrados);
+            return usuariosRegistrados.hasOwnProperty(usuario);
+        }
+
+        function almacenarUsuario(usuario, contrasenia) {
+            var usuariosRegistrados = localStorage.getItem("usuariosRegistrados");
+            if (!usuariosRegistrados) {
+                usuariosRegistrados = {};
+            } else {
+                usuariosRegistrados = JSON.parse(usuariosRegistrados);
+            }
+            usuariosRegistrados[usuario] = contrasenia;
+            localStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
+        }
+    </script>
+</head>
+<body>
+    <!-- Código del cuerpo omitido por brevedad -->
+    <header>
+        <h1>REGISTRO DE DATOS</h1>
+    </header>
+
+    <div class="contenido">
+        <form class="form-basico" action="#" onsubmit="return validarRegistro();" name="formulario">
+            <!-- Resto del formulario -->
+            <div class="titulo">
+                <h2>NUEVO USUARIO</h2>
+            </div>
+            <!-- Campos del formulario omitidos por brevedad -->
+            <div class="entrada">
+                <label>Nombre completo</label>
+                <input type="text" placeholder="Nombre" name="nombreCompleto" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Seleccione el tipo de documento</label>
+                <select name="tipoDocumento">
+                    <option>Cedula de Ciudadania</option>
+                    <option>Cedula de Extrangeria</option>
+                </select>
+            </div>
+
+            <div class="entrada">
+                <label>Numero de documento</label>
+                <input type="number" placeholder="1111111111" name="numeroDocumento" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Digita tu edad</label>
+                <input type="number" placeholder="+18" name="edad" required min="18">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>e-mail</label>
+                <input type="email" placeholder="j123@gmail.com" name="email" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Nombre tu usuario</label>
+                <input type="text" placeholder="Nombre de usuario" name="nombreUsuario" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Contraseña de tu usuario</label>
+                <input type="password" placeholder="*******" name="contrasenia" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Telefono</label>
+                <input type="number" placeholder="3000000000" name="telefono" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div class="entrada">
+                <label>Direccion</label>
+                <input type="text" placeholder="carrera 1 n° 1-1" name="direccion" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                  </svg>
+            </div>
+            <div>
+                <button class="boton" type="submit">Enviar</button>
+            </div>
+           </form>
+        </div>
+        <!-- Menú omitido por brevedad -->
+        <div class="menu">
+            <ul>
+                <li> <a href="index.html">Inicio</a></li>
+                <li> <a href="basicos.html">Entradas Basicas</a></li>
+                <li> <a href="registro.html" class="activo">Form Registro</a></li>
+                <li> <a href="acceso.html">Iniciar Sesion</a></li>
+                <li> <a href="buscar.html">Form Busqueda</a></li>
+                <li> <a href="validar.html">Form Validacion</a></li>
+            </ul>
+
+        </div>
+    </body>
+</html>
+
+
+
+

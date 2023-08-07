@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALIDACION</title>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <title>VALIDACION</title>
+</head>
+<body>
+    <header>
+        <h1>PALABRA A BUSCAR</h1>
+    </header>
+
+    <div class="contenido">
+       <form class="form-basico" action="#" onsubmit="return buscarPalabra(event);">
+        <div class="titulo">
+            <h2>PALABRA A BUSCAR</h2>
+        </div>
+        <div class="entrada">
+            <label>Digita lo que quieres buscar</label>
+            <input type="text" placeholder="Dijita la palabra a buscar" name="buscar" id="buscar" required>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+              </svg>
+        </div>
+        <div>
+            <button class="boton" type="submit">BUSCAR</button>
+        </div>
+        <div class="menu">
+            <ul>
+                <li> <a href="basicos.html" >Entradas Basicas</a></li>
+                <li> <a href="registro.html">Form Registro</a></li>
+                <li> <a href="acceso.html">Iniciar Sesion</a></li>
+                <li> <a href="buscar.html" class="activo">Form Busqueda</a></li>
+                <li> <a href="validar.html">Form Validacion</a></li>
+            </ul>
+
+        </div>
+       </form>
+    </div>
+
+    <script>
+        function buscarPalabra(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe y la página se recargue
+
+            // Obtener la palabra ingresada en el campo de búsqueda
+            const palabraABuscar = document.getElementById("buscar").value.toLowerCase(); // Convertir a minúsculas para evitar problemas de mayúsculas/minúsculas
+
+            // Realizar la búsqueda en el contenido de la página
+            const contenidoPagina = document.body.innerText.toLowerCase(); // Convertir a minúsculas para evitar problemas de mayúsculas/minúsculas
+
+            // Comprobar si la palabra está presente en el contenido de la página
+            if (contenidoPagina.includes(palabraABuscar)) {
+                alert("La palabra \"" + palabraABuscar + "\" ha sido encontrada en el contenido de la página.");
+            } else {
+                alert("La palabra \"" + palabraABuscar + "\" no ha sido encontrada en el contenido de la página.");
+            }
+        }
+    </script>
+</body>
+</html>

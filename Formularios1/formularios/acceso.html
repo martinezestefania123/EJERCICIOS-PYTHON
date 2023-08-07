@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Encabezado omitido por brevedad -->
+    <!--funcion de js para mensaje por pantalla-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INICIO DE SESIÓN</title>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--funcion de js para validar datos-->
+    <script>
+        function iniciarSesion() {
+            var usuario = document.getElementById("nombreUsuario").value;
+            var contrasenia = document.getElementById("contrasenia").value;
+
+            var usuariosRegistrados = localStorage.getItem("usuariosRegistrados");
+            if (!usuariosRegistrados) {
+                swal("¡Error!", "No hay usuarios registrados. Regístrate primero.", "error");
+                return false;
+            }
+
+            usuariosRegistrados = JSON.parse(usuariosRegistrados);
+            if (usuariosRegistrados.hasOwnProperty(usuario) && usuariosRegistrados[usuario] === contrasenia) {
+                swal("¡Éxito!", "Inicio de sesión exitoso.", "success");
+            } else {
+                swal("¡Error!", "Nombre de usuario o contraseña incorrectos.", "error");
+            }
+            return false; // Evita que el formulario se envíe
+        }
+    </script>
+</head>
+<body>
+    <!-- Código del cuerpo omitido por brevedad -->
+    <header>
+        <h1>ADOPTAME</h1>
+    </header>
+
+    <div class="contenido">
+        <form class="form-basico" onsubmit="return iniciarSesion();">
+            <div class="titulo">
+                <h2>INICIAR SESIÓN</h2>
+            </div>
+            <div class="entrada">
+                <label>Nombre de usuario</label>
+                <input type="text" placeholder="Dijita el nombre de tu usuario" id="nombreUsuario" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                </svg>
+            </div>
+            <div class="entrada">
+                <label>Contraseña</label>
+                <input type="password" placeholder="******************" id="contrasenia" required>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                </svg>
+            </div>
+            <div>
+                <button class="boton" type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+    <div class="menu">
+        <!-- Menú omitido por brevedad -->
+        <ul>
+            <li> <a href="index.html">Inicio</a></li>
+
+            <li> <a href="basicos.html">Entradas Basicas</a></li>
+            <li> <a href="registro.html">Form Registro</a></li>
+            <li> <a href="acceso.html" class="activo">Iniciar Sesion</a></li>
+            <li> <a href="buscar.html">Form Busqueda</a></li>
+            <li> <a href="validar.html">Form Validacion</a></li>
+        </ul>
+    </div>
+    <!-- Menú omitido por brevedad -->
+</body>
+</html>
+
+
